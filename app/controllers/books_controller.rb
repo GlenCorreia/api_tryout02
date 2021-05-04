@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = Book.new(title: "Harry Potter 01", author: "JK Rowling")
+    book = Book.new(title: params[:title], author: params[:author])
 
     if book.save
       render json: book, status: :created
