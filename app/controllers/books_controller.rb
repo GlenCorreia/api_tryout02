@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-rescue_from ActiveRecord::RecordNotDestroyed, with: :not_destroyed
 
   def index
     render json: Book.all # default 200 status code
@@ -24,9 +23,5 @@ rescue_from ActiveRecord::RecordNotDestroyed, with: :not_destroyed
 
     def book_params
       params.require(:book).permit(:title, :author)
-    end
-
-    def not_destroyed
-      render json: {}, status: :unprocessable_entity
     end
 end
