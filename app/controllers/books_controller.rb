@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   def index
-    render json: Book.all
+    render json: Book.all # default 200 status code
   end
 
   def create
