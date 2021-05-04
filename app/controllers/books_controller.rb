@@ -13,6 +13,11 @@ class BooksController < ApplicationController
     end
   end
 
+  def destroy
+    book = Book.find(params[:id]).destroy! # Find a book by the params hash
+    head :no_content
+  end
+
   private
 
     def book_params
