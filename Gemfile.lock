@@ -60,6 +60,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    bcrypt (3.1.16)
     bootsnap (1.7.4)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -158,14 +159,13 @@ GEM
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    wicked_pdf (2.1.0)
-      activesupport
     zeitwerk (2.4.2)
 
 PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   byebug
   factory_bot_rails
@@ -176,7 +176,6 @@ DEPENDENCIES
   rspec-rails
   sqlite3 (~> 1.4)
   tzinfo-data
-  wicked_pdf
 
 RUBY VERSION
    ruby 2.7.2p137
