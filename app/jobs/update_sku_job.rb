@@ -11,7 +11,7 @@ class UpdateSkuJob < ApplicationJob
     end
 
     output_json = JSON.parse(res.body)
-
+    p "First EPOCH is #{output_json[0]['epoch']}"
     #  File.open("response.txt", "w") { |f| f.write output_json }
   end
 end
