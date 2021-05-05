@@ -28,6 +28,15 @@ describe 'Books API', type: :request do
       }
 
       expect(response).to have_http_status(:created)
+
+      expect(JSON.parse(response.body)).to eq(
+        {
+          "id" => 4,
+          "title" => "The Martian",
+          "author_name" => "Andy Weir",
+          "author_age" => 70
+        }
+      )
     end
   end
 
