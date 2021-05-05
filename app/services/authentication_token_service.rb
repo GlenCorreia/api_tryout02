@@ -1,10 +1,11 @@
 class AuthenticationTokenService
+  HMAC_SECRET = 'sdfasdf'
+
   def self.call
-    hmac_secret = 'sdfasdf'
     payload = {
       "test" => "blah"
     } 
 
-    JWT.encode payload, hmac_secret, 'HS265'
+    JWT.encode payload, HMAC_SECRET, 'HS265'
   end
 end
