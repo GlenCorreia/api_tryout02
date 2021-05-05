@@ -2,6 +2,7 @@ module Api
   module V1 
     class AuthenticationController < ApplicationController 
       rescue_from ActionController::ParameterMissing, with: :parameter_missing
+      
       def create
         p params.require(:username)
         p params.require(:password)
