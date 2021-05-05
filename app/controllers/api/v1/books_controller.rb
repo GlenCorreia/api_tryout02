@@ -4,7 +4,8 @@ module Api
     class BooksController < ApplicationController
     
       def index
-        render json: Book.all # default 200 status code
+        books = Book.all
+        render json: BooksRepresenter.new(books).as_json # Book.all # default 200 status code
       end
     
       def create
@@ -28,6 +29,6 @@ module Api
           params.require(:book).permit(:title, :author)
         end
     end
-    
+
   end
 end
