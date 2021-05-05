@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_05_05_041421) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -27,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_05_05_041421) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "author_id"
+    t.integer "author_id"
     t.index ["author_id"], name: "index_books_on_author_id"
   end
 
