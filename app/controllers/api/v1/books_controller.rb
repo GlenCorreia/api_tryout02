@@ -13,17 +13,10 @@ module Api
     
       def create
         # binding.irb or byebug
-        # author = Author.create!(author_params)
-        # book = Book.new(book_params.merge(author_id: author.id))
-        
-        uri = URI('http://localhot:4567/update_sku')
-        req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
-        req.body = { sku: '123', name: book_params[:title] }.to_json
-        res = Net::HTTP.start(uri.hostname, uri.port) do |http|
-          http.request(req)
-        end
+        author = Author.create!(author_params)
+        book = Book.new(book_params.merge(author_id: author.id))
 
-        raise 'exit'
+        UpdateSkuJob.perform_later(book_params[:title])
 
         if book.save
           render json: BookRepresenter.new(book).as_json, status: :created
