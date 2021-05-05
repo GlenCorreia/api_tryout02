@@ -2,15 +2,18 @@ require 'rails_helper'
 
 describe 'Books API', type: :request do 
   describe 'GET /books' do
+    let(:first_author) { FactoryBot.create(:author, first_name: 'George', last_name: 'Orwell', age: 70) }
+    let(:second_author) { FactoryBot.create(:author, first_name: 'H.G.', last_name: 'Wells', age: 78) }
+   
     before do # This before will get run before every test in this describe scope
-      FactoryBot.create(:book, title: "1984", author: "George Orwell")
-      FactoryBot.create(:book, title: "The Time Machine", author: "H.G. Wells")
+      FactoryBot.create(:book, title: "1984", author: first_author)
+      FactoryBot.create(:book, title: "The Time Machine", author: second_author)
     end
 
     xit 'returns all books' do 
 
       get '/api/v1/books'
-
+      byebug
       expect(response).to have_http_status(:success)
       # expect(JSON.parse(response.body).size).to eq(2) 
     end
@@ -41,7 +44,7 @@ describe 'Books API', type: :request do
   end
 
   describe 'DELETE /books/:id' do 
-    let!(:book) { FactoryBot.create(:book, title: "1984", author: "George Orwell") }
+    let!(:book) { FactoryBot.create(:book, title: "1984", author: first_author) }
     
     xit 'deletes a book' do 
     delete "/api/v1/books/#{book.id}"

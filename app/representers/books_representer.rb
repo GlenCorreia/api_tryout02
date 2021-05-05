@@ -4,6 +4,7 @@ class BooksRepresenter
   end
 
   def as_json
+    # byebug
     books.map do |book|
       {
         id: book.id,
@@ -19,6 +20,7 @@ class BooksRepresenter
     attr_reader :books
 
     def author_name_combined(book)
+      # byebug
       "#{book.author.first_name} #{book.author.last_name}"
     end
 end
