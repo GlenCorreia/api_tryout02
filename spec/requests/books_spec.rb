@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 describe 'Books API', type: :request do 
+  let(:first_author) { FactoryBot.create(:author, first_name: 'George', last_name: 'Orwell', age: 70) }
+  let(:second_author) { FactoryBot.create(:author, first_name: 'H.G.', last_name: 'Wells', age: 78) }
+  
   describe 'GET /books' do
-    let(:first_author) { FactoryBot.create(:author, first_name: 'George', last_name: 'Orwell', age: 70) }
-    let(:second_author) { FactoryBot.create(:author, first_name: 'H.G.', last_name: 'Wells', age: 78) }
    
     before do # This before will get run before every test in this describe scope
       FactoryBot.create(:book, title: "1984", author: first_author)
