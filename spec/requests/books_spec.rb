@@ -15,15 +15,14 @@ describe 'Books API', type: :request do
 
   describe 'POST /books' do 
     it 'creates a new book' do 
-      expect {
-        post '/api/v1/books', params: { book: { title: 'The Martian', author: 'Andy Weir' } }
-      }.to change { Book.count }.from(0).to(1)
+      post '/api/v1/books', params: { book: { title: 'The Martian', author: 'Andy Weir' } }
 
       expect(response).to have_http_status(:created)
     end
   end
 
   describe 'DELETE /books/:id' do 
+    FactoryBot.create(:book, title: "1984", author: "George Orwell")
     it 'deletes a book' do 
       delete '/api/v1/books/1'
       
